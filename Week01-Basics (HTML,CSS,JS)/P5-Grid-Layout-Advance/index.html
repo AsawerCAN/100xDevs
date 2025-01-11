@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Advance Layout</title>
+    <style>
+      body {
+        margin: 0;
+        padding: o;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        max-width: 1200px;
+        width: 100%;
+        height: 40vh;
+      }
+
+      .left {
+        background-color: red;
+        display: grid;
+        align-items: center;
+        color: white;
+      }
+      .right {
+        background-color: blue;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa a eaque
+        asperiores et accusamus hic aperiam minus aspernatur voluptas, ea
+        molestias consequatur inventore omnis quos fugit nesciunt accusantium
+        laborum. Cupiditate.
+      </div>
+      <div class="right">
+        <div>Col 1</div>
+        <div>Col 2</div>
+        <div>Col 3</div>
+        <div>Col 1</div>
+        <div>Col 2</div>
+        <div>Col 3</div>
+        <div>Col 1</div>
+        <div>Col 2</div>
+        <div>Col 3</div>
+      </div>
+    </div>
+  </body>
+</html>
