@@ -1,17 +1,26 @@
 function waitT1(t1) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    if (typeof t1 !== "number" || t1 < 0) {
+      return reject(new Error("Time must be a non-negative number"));
+    }
     setTimeout(() => resolve(`Resolved after ${t1} seconds`), t1 * 1000);
   });
 }
 
 function waitT2(t2) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    if (typeof t2 !== "number" || t2 < 0) {
+      return reject(new Error("Time must be a non-negative number"));
+    }
     setTimeout(() => resolve(`Resolved after ${t2} seconds`), t2 * 1000);
   });
 }
 
 function waitT3(t3) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    if (typeof t3 !== "number" || t3 < 0) {
+      return reject(new Error("Time must be a non-negative number"));
+    }
     setTimeout(() => resolve(`Resolved after ${t3} seconds`), t3 * 1000);
   });
 }
@@ -28,6 +37,4 @@ function waitForAll(t1, t2, t3) {
   });
 }
 
-waitForAll(2, 3, 5).then((time) => {
-  console.log(`Total time taken: ${time} ms`);
-});
+module.exports = { waitForAll };
