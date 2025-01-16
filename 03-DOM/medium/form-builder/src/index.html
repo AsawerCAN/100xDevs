@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Builder - Asawer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="builder-panel">
+        <h2>Form Builder</h2>
+        <div class="option-group">
+          <label>Field Type</label>
+          <select id="fieldType">
+            <option value="">Select Field Type</option>
+            <option value="text">Text</option>
+            <option value="email">Email</option>
+            <option value="number">Number</option>
+            <option value="textarea">Textarea</option>
+            <option value="radio">Radio Group</option>
+            <option value="checkbox">Checkbox Group</option>
+          </select>
+        </div>
+        <div id="fieldOptions"></div>
+      </div>
+
+      <div class="preview-panel">
+        <h2>Form Preview</h2>
+        <form id="previewForm"></form>
+        <div id="exportSection">
+          <button class="btn btn-primary" onclick="exportForm()">
+            Export Form
+          </button>
+          <textarea id="codePreview" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
