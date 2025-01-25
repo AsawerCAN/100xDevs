@@ -32,7 +32,7 @@ export const updateTodo = async (req, res) => {
     const existingTodo = await TodoModel.findOne({ _id: id, userId });
     if (!existingTodo) {
       return res
-        .status(400)
+        .status(404)
         .json({ message: "Todo not found or access denied" });
     }
 
@@ -47,6 +47,52 @@ export const updateTodo = async (req, res) => {
       .json({ message: "Todo Updated successfully", todo: updateTodo });
   } catch (error) {
     console.log("error in todo update controller", error.message);
-    return res.status(400).json({ message: "Error Updating Todo" });
+    return res.status(500).json({ message: "Error Updating Todo" });
+  }
+};
+
+export const getTodos = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.userId;
+
+  try {
+    if (id) {
+      const todo = await TodoModel.findOne({ _id: id, userId });
+      if (!todo) {
+        return res
+          .status(404)
+          .json({ message: "Todo not found or unauthorized" });
+      }
+      return res.status(200).json(todo);
+    } else {
+      const todos = await TodoModel.find({ userId });
+      return res.status(200).json(todos);
+    }
+  } catch (error) {
+    console.log("error in get todo  controller", error.message);
+    return res.status(500).json({ message: "Error Getting Todo" });
+  }
+};
+
+export const deleteTodo = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.userId;
+
+  try {
+    if (!id) {
+      return res.status(400).json({ message: "Todo ID required" });
+    }
+
+    const todo = await TodoModel.findOneAndDelete({ _id: id, userId });
+    if (!todo) {
+      return res
+        .status(404)
+        .json({ message: "Todo not found or unauthorized" });
+    }
+
+    return res.status(200).json({ message: "Todo deleted successfully" });
+  } catch (error) {
+    console.log("error in delete todo  controller", error.message);
+    return res.status(500).json({ message: "Error Deleting Todo" });
   }
 };

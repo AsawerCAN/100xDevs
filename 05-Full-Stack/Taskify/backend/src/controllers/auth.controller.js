@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import UserModel from "../model/user.model.js";
-import generateTokenAndSetCookie from "../lib/generateTokenAndSetCookie.js";
+import generateTokenAndSetCookie from "../lib/generateTokenAndSetCookie .js";
 
 export const register = async (req, res) => {
   const { username, password } = req.body;
